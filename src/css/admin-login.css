@@ -1,0 +1,247 @@
+/* ==========================================================================
+   PORTAL GATEWAY CORE RESET & VIEWPORT
+   ========================================================================== */
+.auth-viewport {
+    background-color: #f9f8f6 !important;
+    /* Maps the exact light off-white shade from the mockup */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 100vh !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 24px !important;
+    font-family: 'DM Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+.auth-viewport * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Freestanding Container Box Engine */
+.auth-portal-container {
+    display: flex !important;
+    /* Explicitly overrides any dashboard view parameter layers */
+    visibility: visible !important;
+    width: 100%;
+    max-width: 440px;
+    /* Perfectly scales the input wrapper field bounding ratio geometry */
+    flex-direction: column;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY BRAND GRAPHS (Brittany Signature)
+   ========================================================================== */
+.auth-brand-group {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.auth-logo-script {
+    font-family: 'Brittany Signature', cursive !important;
+    /* Correct script pointer asset font mapping link */
+    font-size: 54px;
+    font-weight: 400;
+    font-style: normal !important;
+    color: #1a1814 !important;
+    line-height: 0.85;
+    text-transform: none !important;
+    letter-spacing: 0px !important;
+}
+
+.auth-logo-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    /* Spread tracker layout formatting metrics */
+    color: #5c5750 !important;
+    margin-top: 4px;
+}
+
+/* Headline Prompt Information Text Fields */
+.auth-headline-block {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.auth-headline-block h2 {
+    font-family: 'Cormorant Garamond', serif !important;
+    /* Matches serif look from picture blueprint specs */
+    font-size: 32px;
+    font-weight: 400;
+    color: #1a1814 !important;
+    margin-bottom: 8px;
+}
+
+.auth-headline-block p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: #5c5750 !important;
+}
+
+/* Custom In-Line Validation Error Notifications */
+.auth-alert-banner {
+    display: none;
+    background-color: #fdf3f3;
+    border: 1px solid #f5c8c8;
+    color: #7a2b2b;
+    border-radius: 4px;
+    padding: 12px;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   INPUT ARCHITECTURES & BUTTON COMPONENT ACTIONS
+   ========================================================================== */
+.auth-input-field-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 22px;
+    width: 100%;
+}
+
+.auth-input-field-item label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: #5c5750 !important;
+    margin-bottom: 8px;
+}
+
+.auth-label-split-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.auth-utility-link {
+    font-size: 10px;
+    font-weight: 500;
+    color: #a09b95 !important;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+}
+
+.auth-utility-link:hover {
+    color: #1a1814 !important;
+}
+
+.auth-input-field-item input {
+    background-color: #fff !important;
+    border: 1px solid #b0aba4 !important;
+    /* Sharp gray outline borders matching mockup screen */
+    border-radius: 2px !important;
+    /* Clean rectangular corners */
+    padding: 14px 16px !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px !important;
+    color: #1a1814 !important;
+    width: 100% !important;
+    outline: none !important;
+}
+
+.auth-input-field-item input:focus {
+    border-color: #1a1814 !important;
+}
+
+/* Checklist Box Interface Mechanics */
+.auth-checkbox-row-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: -4px;
+    margin-bottom: 36px;
+}
+
+.auth-custom-checkbox-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.auth-custom-checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.auth-custom-checkbox-box {
+    height: 16px;
+    width: 16px;
+    background-color: #fff;
+    border: 1px solid #b0aba4;
+    border-radius: 2px;
+    margin-right: 10px;
+    display: inline-block;
+    position: relative;
+}
+
+.auth-custom-checkbox-container input:checked~.auth-custom-checkbox-box {
+    background-color: #1a1814 !important;
+    border-color: #1a1814 !important;
+}
+
+.auth-custom-checkbox-box::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.auth-custom-checkbox-container input:checked~.auth-custom-checkbox-box::after {
+    display: block;
+}
+
+.auth-checkbox-label-text {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: #5c5750 !important;
+}
+
+/* Massive Full-Width Access Button Trigger Styles */
+.btn-portal-submit {
+    display: flex !important;
+    /* Overrides any outer system configuration layer blockers */
+    visibility: visible !important;
+    width: 100% !important;
+    background-color: #1a1814 !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 2px !important;
+    padding: 16px 24px !important;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.btn-portal-submit:hover {
+    background-color: #5c5750 !important;
+}
+
+.btn-portal-submit span {
+    font-size: 14px;
+    line-height: 1;
+}

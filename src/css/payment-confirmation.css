@@ -1,0 +1,171 @@
+:root {
+    --cream-bg: #f5f0eb;
+    --card-border: #d4cecb;
+    --solid-black: #1a1a1a;
+    --muted-gray: #706c69;
+}
+
+.booking-wizard-layout {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--cream-bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Top Bar styling from Payment.png */
+.wizard-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #211f1d;
+    color: #ffffff;
+    padding: 16px 40px;
+}
+
+.wizard-brand-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+}
+
+.nav-back-btn,
+.nav-close-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+/* Layout Workspace Split Grid */
+.wizard-main-workspace {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Form Container and Cards Formatting */
+.wizard-left-form-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.wizard-section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    margin: 0;
+}
+
+.wizard-card-box {
+    border: 1px solid var(--solid-black);
+    padding: 24px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.wizard-card-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0 8px;
+}
+
+/* Payment Choice Selectors custom structures */
+.payment-options-matrix-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.payment-method-selector-card {
+    border: 1px solid var(--card-border);
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.4);
+    transition: all 0.2s ease-in-out;
+}
+
+.payment-method-selector-card.selected {
+    border-color: var(--solid-black);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.method-main-title {
+    display: block;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--solid-black);
+}
+
+.method-sub-desc {
+    display: block;
+    font-size: 12px;
+    color: var(--muted-gray);
+    margin-top: 4px;
+}
+
+/* GCash Target Box Area formatting from 6f598b75-3122-47f3-b8d2-93ce180e6337.jfif */
+.gcash-qr-display-container-overlay {
+    margin-top: 16px;
+    padding: 24px;
+    border: 1px dashed var(--solid-black);
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.qr-wrapper-frame {
+    max-width: 260px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.gcash-embedded-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Submit Triggers and Side Sticky Summaries */
+.btn-wizard-action-submit-solid {
+    background-color: var(--solid-black);
+    color: #ffffff;
+    border: none;
+    padding: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    width: 100%;
+}
+
+.summary-sticky-card {
+    border: 1px solid var(--solid-black);
+    padding: 24px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.grand-total-highlight-footer-block {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 700;
+    border-top: 1px solid var(--solid-black);
+    margin-top: 16px;
+    padding-top: 16px;
+}

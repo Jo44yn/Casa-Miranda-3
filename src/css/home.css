@@ -1,0 +1,593 @@
+/* --- CUSTOM FONT INTEGRATION --- */
+@font-face {
+    font-family: 'Brittany Signature';
+    src: url('/BrittanySignature.ttf') format('truetype');
+    /* The leading slash points directly to the public folder */
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --bg-main: #f4f2ec;
+    --bg-dark: #23221f;
+    --bg-cta: #d1d1cd;
+    --text-dark: #1a1a1a;
+    --text-muted: #888;
+    --border-color: #dcd9d1;
+    --border-dark: #1a1a1a;
+
+    /* Typography */
+    --font-serif: 'EB Garamond', serif;
+    --font-sans: 'Hanken Grotesk', sans-serif;
+    --font-cursive: 'Brittany Signature', cursive;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+/* --- HEADER (Transparent to Solid) --- */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 3rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    color: white;
+    transition: background-color 0.4s ease, padding 0.4s ease;
+}
+
+.top-nav.scrolled {
+    background-color: var(--bg-dark);
+    padding: 1.5rem 4rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.nav-links a:hover {
+    opacity: 0.7;
+}
+
+.logo {
+    font-family: var(--font-cursive);
+    font-size: 2rem;
+    font-weight: 400;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background-color: white;
+    color: var(--text-dark);
+    text-decoration: none;
+    padding: 0.85rem 2.5rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #e5e3dc;
+}
+
+/* --- IMMERSIVE HERO SECTION --- */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* Full viewport height for maximum impact */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.5) 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+}
+
+.hero-subtitle {
+    display: block;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: 5rem;
+    font-weight: 400;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* --- STACKED AVAILABILITY BAR --- */
+.availability-bar {
+    background-color: var(--bg-main);
+    padding: 4rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+}
+
+.availability-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    /* 2 equal inputs, 1 auto button */
+    gap: 2rem;
+    align-items: end;
+    width: 100%;
+    max-width: 900px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.input-group input[type="date"] {
+    width: 100%;
+    height: 50px;
+    padding: 0 0.5rem 0 0;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    background-color: transparent;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.input-group input[type="date"]:focus {
+    outline: none;
+    border-bottom-color: var(--text-dark);
+}
+
+.btn-dark {
+    background-color: var(--bg-dark);
+    color: white;
+    border: none;
+    height: 50px;
+    /* Perfectly matches input height */
+    padding: 0 2.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.btn-dark:hover {
+    opacity: 0.9;
+}
+
+/* --- EXPERIENCE SECTION --- */
+.experience-section {
+    padding: 6rem 4rem;
+    /* Safe, standard padding */
+}
+
+/* --- REUSABLE SECTION HEADER --- */
+.section-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+}
+
+.section-header .subtitle {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.section-header h2 {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.section-header p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.link-underline {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--text-dark);
+    padding-bottom: 2px;
+    transition: opacity 0.3s;
+}
+
+.link-underline:hover {
+    opacity: 0.6;
+}
+
+/* --- GALLERY SLIDER SECTION --- */
+.slider-container {
+    position: relative;
+    max-width: 1000px;
+    /* Limits the width so the rectangles are smaller */
+    margin: 0 auto;
+    overflow: hidden;
+    /* Hides the images outside the box */
+    padding: 0 4rem;
+    /* Makes room for the arrows */
+}
+
+.slider-track {
+    display: flex;
+    gap: 1.5rem;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    /* Shows 3 smaller images at a time on desktop */
+    flex: 0 0 calc(33.333% - 1rem);
+    aspect-ratio: 3 / 4;
+    /* Shorter, more elegant rectangle shape */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    /* A tiny rounded corner for luxury feel */
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-family: var(--font-sans);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--text-dark);
+    cursor: pointer;
+    z-index: 10;
+    transition: opacity 0.3s, transform 0.3s;
+    padding: 1rem;
+}
+
+.slider-btn:hover {
+    opacity: 0.6;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 0;
+}
+
+.next-btn {
+    right: 0;
+}
+
+/* Responsive Adjustments for Slider */
+@media (max-width: 1024px) {
+    .slide {
+        flex: 0 0 calc(50% - 0.75rem);
+    }
+
+    /* 2 items on tablet */
+}
+
+@media (max-width: 768px) {
+    .slide {
+        flex: 0 0 100%;
+    }
+
+    /* 1 item on mobile */
+    .slider-container {
+        padding: 0 3rem;
+    }
+}
+
+/* --- AMENITIES SECTION --- */
+.amenities-section {
+    padding: 0 4rem 6rem 4rem;
+}
+
+.amenities-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+
+    /* Constrains the width so the images don't get huge */
+    max-width: 900px;
+    margin: 0 auto;
+    /* Centers the grid perfectly on the page */
+}
+
+.amenity-card h3 {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 1.5rem 0 0.5rem 0;
+}
+
+.amenity-card p {
+    font-size: 0.9rem;
+    max-width: 90%;
+    color: var(--text-muted);
+}
+
+.amenity-img-placeholder {
+    aspect-ratio: 4 / 3;
+    background-color: transparent;
+    overflow: hidden;
+    border-radius: 4px;
+    /* Adds a tiny, elegant curved corner */
+}
+
+.amenity-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    /* Smooth transition for the hover effect */
+}
+
+
+/* --- CTA SECTION --- */
+.cta-section {
+    /* This CSS property applies a dark semi-transparent overlay 
+       on top of your background image. 
+    */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=2070&auto=format&fit=crop');
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* This creates the luxury parallax effect */
+
+    padding: 10rem 2rem;
+    text-align: center;
+    color: white;
+    /* Text must be white to stand out against the dark photo */
+}
+
+.cta-section h2 {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    /* Adds readability */
+}
+
+.cta-section p {
+    font-size: 0.95rem;
+    margin-bottom: 3rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid white;
+    /* White border for the new look */
+    color: white;
+    text-decoration: none;
+    padding: 0.85rem 2.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline:hover {
+    background-color: white;
+    color: var(--text-dark);
+    /* Inverts on hover */
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--bg-main);
+    /* Match the site background */
+    color: var(--text-dark);
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5rem 4rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.footer-left {
+    padding-right: 4rem;
+}
+
+.logo-footer {
+    font-family: var(--font-sans);
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.footer-left p {
+    font-size: 0.85rem;
+    max-width: 400px;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icons a {
+    color: var(--text-dark);
+}
+
+.footer-right {
+    border-left: 1px solid var(--border-color);
+    padding-left: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+.footer-label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.footer-right p {
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Dark Bottom Bar */
+.footer-bottom {
+    background-color: var(--bg-dark);
+    color: #888;
+    padding: 1.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+}
+
+.footer-bottom .footer-links {
+    display: flex;
+    gap: 4rem;
+}
+
+.footer-bottom a {
+    color: #888;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    color: white;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 1024px) {
+    .nav-links {
+        display: none;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .availability-form {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+    }
+
+    .btn-dark {
+        height: auto;
+        padding: 1.25rem;
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .amenities-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .footer-right {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--border-dark);
+        padding-top: 3rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}

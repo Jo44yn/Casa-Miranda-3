@@ -1,0 +1,1008 @@
+/* ==========================================================================
+   1. CORE THEME VARIABLES & RESET
+   ========================================================================== */
+:root {
+    --black: #1a1814;
+    --border: #e8e2d9;
+    --light: #a09b95;
+    --mid: #5c5750;
+    --cream-light: #f9f8f6;
+    --cream-dark: #f0ede9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--cream-light);
+    color: var(--black);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   2. MAIN SINGLE-PAGE APPLICATION (SPA) LAYOUT
+   ========================================================================== */
+.layout {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: var(--cream-dark);
+    border-right: 1px solid var(--border);
+    padding: 48px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+
+/* FIXED & ISOLATED: Clean block element wrapper containing the brand tags */
+.c-sidebar__brand {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    margin-bottom: 48px !important;
+    /* Forces the navigation menu to stay far below */
+    position: relative !important;
+}
+
+/* FIXED: Isolated from landing page logo styles */
+.sidebar-brand-sub {
+    font-size: 10px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.12em !important;
+    color: var(--light) !important;
+    text-transform: uppercase !important;
+    margin-bottom: 8px !important;
+    line-height: 1 !important;
+    display: block !important;
+    position: relative !important;
+}
+
+/* FIXED: Isolated from landing page logo styles and forced into standard flow */
+.sidebar-brand-title {
+    font-family: 'Brittany Signature', cursive !important;
+    font-size: 32px !important;
+    font-weight: 400 !important;
+    line-height: 1.2 !important;
+    color: var(--black) !important;
+    display: block !important;
+    position: relative !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--mid);
+    cursor: pointer;
+    border-radius: 6px;
+    line-height: 1;
+    transition: all 0.2s ease;
+}
+
+.nav-item svg {
+    opacity: 0.7;
+}
+
+.nav-item:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+    color: var(--black);
+}
+
+.nav-item.active {
+    background-color: var(--black);
+    color: #fff;
+    font-weight: 500;
+}
+
+.nav-item.active svg {
+    opacity: 1;
+}
+
+.main {
+    flex: 1;
+    margin-left: 260px;
+    padding: 48px;
+    max-width: 1200px;
+    width: auto;
+    min-width: 0;
+}
+
+/* ==========================================================================
+   3. TAB CONTENT MODULE DISPLAY CONTROLS
+   ========================================================================== */
+.tab-view {
+    display: none;
+    animation: fadeIn 0.25s ease-in-out;
+}
+
+.tab-view.active-view {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   4. SHARED TOPBAR UI COMPONENTS
+   ========================================================================== */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 36px;
+    width: 100%;
+}
+
+.topbar-left h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 400;
+    color: var(--black);
+}
+
+.overview-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 4px;
+}
+
+.topbar-actions,
+.topbar-actions-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* ==========================================================================
+   5. BUTTONS, SEARCH & INPUT FIELDS
+   ========================================================================== */
+.btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-solid {
+    background-color: var(--black);
+    color: #fff;
+}
+
+.btn-solid:hover {
+    background-color: var(--mid);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--border);
+    color: var(--black);
+}
+
+.btn-outline:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+    border-color: var(--light);
+}
+
+.btn-filter {
+    background: #fff;
+    border: 1px solid var(--border);
+    color: var(--black);
+}
+
+.search-wrapper {
+    position: relative;
+}
+
+.search-input {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-size: 12px;
+    width: 240px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--black);
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: var(--light);
+}
+
+/* ==========================================================================
+   6. METRIC & ANALYTICS STATUS CARDS
+   ========================================================================== */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.stat-card,
+.card-outline {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-outline {
+    background: transparent;
+}
+
+.stat-card.dark {
+    background-color: var(--black);
+    color: #fff;
+    border: none;
+}
+
+.stat-label,
+.stat-trevpar {
+    font-size: 11px;
+    color: var(--light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.stat-card.dark .stat-trevpar {
+    color: var(--border);
+    opacity: 0.8;
+}
+
+.stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    margin: 8px 0 4px;
+    color: inherit;
+}
+
+.peso {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 28px;
+    margin-right: 2px;
+}
+
+.stat-sub {
+    font-size: 11px;
+    color: var(--light);
+}
+
+.stat-card.dark .stat-sub {
+    color: var(--border);
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   7. CORE DASHBOARD CONTENT LAYOUTS
+   ========================================================================== */
+.content-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+
+.calendar-section {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 24px;
+}
+
+.admin-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.admin-section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 4px;
+}
+
+.arrow-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.arrow-btn:hover {
+    border-color: var(--light);
+}
+
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.panel-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--light);
+    margin-bottom: 12px;
+}
+
+.quick-actions-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.quick-action {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 14px;
+    text-align: left;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.quick-action:hover {
+    border-color: var(--light);
+}
+
+.reservation-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 16px;
+}
+
+.res-name {
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.res-date {
+    font-size: 11px;
+    color: var(--light);
+    margin: 4px 0 10px;
+}
+
+.res-tag {
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    color: #2e5c24;
+    background: #e2f3e0;
+    padding: 2px 8px;
+}
+
+/* ==========================================================================
+   8. DYNAMIC LEDGER TABLES & ARCHITECTURES
+   ========================================================================== */
+.ledger-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid var(--border);
+    margin-top: 16px;
+    text-align: left;
+}
+
+.ledger-table th {
+    background: #fff;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    padding: 14px 16px;
+    font-weight: 500;
+    border-bottom: 1.5px solid var(--border);
+}
+
+.ledger-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.transparent-table {
+    background: transparent !important;
+    border: none !important;
+}
+
+.transparent-table th {
+    border-bottom: 1px solid var(--black) !important;
+    background: transparent !important;
+    padding-left: 0;
+}
+
+.transparent-table td {
+    border-bottom: 1px solid var(--border);
+    padding-left: 0;
+}
+
+.primary-text-bold {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--black);
+}
+
+.primary-text-regular {
+    font-size: 13px;
+    color: var(--black);
+}
+
+.sub-text-light {
+    font-size: 11px;
+    color: var(--light);
+    margin-top: 2px;
+}
+
+.history-metric {
+    font-size: 12px;
+    color: var(--light);
+}
+
+.history-metric span {
+    font-size: 24px;
+    color: var(--black);
+    font-family: 'Cormorant Garamond', serif;
+    margin-right: 4px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.badge-confirmed {
+    background-color: #e2f3e0;
+    color: #2e5c24;
+    border: 1px solid #c3e6bc;
+}
+
+.badge-complete {
+    background-color: #f0ede9;
+    color: var(--black);
+    border: 1px solid var(--border);
+}
+
+.badge-cancelled {
+    background-color: #fce8e8;
+    color: #7a2b2b;
+    border: 1px solid #f5c1c1;
+}
+
+.section-divider-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--light);
+    margin: 32px 0 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 8px;
+}
+
+.ledger-row-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.ledger-id {
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    color: var(--light);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.ledger-title-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--black);
+}
+
+.ledger-subtitle-date {
+    font-size: 11px;
+    color: var(--light);
+}
+
+.ledger-center-amount {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 32px;
+    color: var(--black);
+    flex: 1;
+    text-align: right;
+    padding-right: 48px;
+}
+
+.ledger-right-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.btn-action-text {
+    background: none;
+    border: none;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    color: var(--black);
+}
+
+.small-btn {
+    padding: 6px 12px;
+    font-size: 10px;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--mid);
+}
+
+.pagination-numbers {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.num-btn {
+    background: transparent;
+    border: none;
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+    cursor: pointer;
+    color: var(--mid);
+}
+
+.num-btn.active {
+    border: 1px solid var(--black);
+    color: var(--black);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   9. GRAPHICS & VISUAL ANALYTICS PANELS
+   ========================================================================== */
+.analytics-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.chart-main-card {
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 24px;
+    position: relative;
+}
+
+.chart-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+}
+
+.dots-menu {
+    cursor: pointer;
+    color: var(--light);
+}
+
+.chart-axis-y {
+    position: absolute;
+    left: 24px;
+    top: 76px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--light);
+    text-align: right;
+    width: 35px;
+}
+
+.svg-chart-container {
+    margin-left: 45px;
+    height: 140px;
+    border-left: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    position: relative;
+}
+
+.analytics-svg-line {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.chart-axis-x {
+    margin-left: 45px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    font-size: 10px;
+    color: var(--light);
+    padding: 0 10px;
+}
+
+.peak-days-card {
+    border: 1px solid var(--border);
+    padding: 24px;
+}
+
+.peak-days-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 16px;
+}
+
+.days-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.days-list li {
+    font-size: 12px;
+    color: var(--mid);
+    display: flex;
+    justify-content: space-between;
+}
+
+.days-list li.active-peak {
+    font-weight: bold;
+    color: var(--black);
+}
+
+/* ==========================================================================
+   10. MODAL TRANSACTION COMPONENT OVERLAYS
+   ========================================================================== */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(26, 24, 20, 0.4);
+    backdrop-filter: blur(2px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.custom-modal-card {
+    background-color: #fff;
+    border: 1px solid var(--border);
+    padding: 32px;
+    width: 100%;
+    max-width: 480px;
+}
+
+.custom-modal-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: var(--black);
+}
+
+.form-input-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.form-input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-input-item label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--mid);
+}
+
+.form-input-item input {
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--black);
+    outline: none;
+}
+
+.form-input-item input:focus {
+    border-color: var(--light);
+}
+
+.form-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.text-danger {
+    color: #a73a3a !important;
+}
+
+/* ==========================================================================
+   11. BILLING INVOICE SYSTEM INTERFACE STYLES
+   ========================================================================== */
+.invoice-card-layout {
+    max-width: 540px !important;
+}
+
+.invoice-brand-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.invoice-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.invoice-details-grid h4,
+.invoice-card-layout h4 {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--light);
+    font-weight: 500;
+}
+
+.invoice-summary-block {
+    margin-top: 24px;
+    background-color: var(--cream-light);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inv-summary-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--mid);
+}
+
+.inv-summary-line.grand-total {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #invoice-viewer-modal,
+    #invoice-viewer-modal * {
+        visibility: visible;
+    }
+
+    #invoice-viewer-modal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        background: #fff;
+    }
+
+    .form-modal-actions {
+        display: none !important;
+    }
+}
+
+/* ==========================================================================
+   12. BOOKINGS SUB-NAVIGATION ROW COMPONENTS
+   ========================================================================== */
+.table-filter-pills-row-bar {
+    display: flex;
+    gap: 8px;
+    margin: 20px 0 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+}
+
+.filter-pill-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    padding: 6px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--mid);
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.15s ease-in-out;
+}
+
+.filter-pill-btn:hover {
+    background-color: var(--border);
+    color: var(--black);
+}
+
+.filter-pill-btn.active {
+    background-color: var(--black);
+    color: #fff;
+    font-weight: 500;
+}
+
+.booking-row-entry {
+    transition: background-color 0.1s ease-in-out;
+}
+
+.booking-row-entry:hover {
+    background-color: rgba(26, 24, 20, 0.01);
+}
+
+/* ==========================================================================
+   13. GUEST DIRECTORY LIST COMPONENT SPECIFIC LAYOUTS
+   ========================================================================== */
+.history-metric {
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    color: var(--light);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   14. VECTOR PLOTTING CHART EFFECTS
+   ========================================================================== */
+.chart-hover-node {
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), r 0.2s ease;
+    transform-origin: center;
+}
+
+.chart-hover-node:hover {
+    r: 7.5;
+    fill: var(--mid);
+}
+
+/* ==========================================================================
+   16. GRID RE-ALIGNMENT PATCH RULES
+   ========================================================================== */
+.cal-grid {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr) !important;
+    gap: 1px !important;
+    background-color: var(--border) !important;
+    width: 100% !important;
+}
+
+.cal-header-cell {
+    background-color: #fff !important;
+    padding: 14px 10px !important;
+    text-align: center !important;
+    font-size: 10px !important;
+    font-weight: 500 !important;
+    color: var(--light) !important;
+    letter-spacing: 0.08em !important;
+}
+
+.cal-date-box {
+    background-color: #fff !important;
+    min-height: 54px !important;
+    padding: 8px !important;
+    display: block !important;
+}
+
+/* ==========================================================================
+   17. RESERVATION COLORS & STATUS STATES
+   ========================================================================== */
+.cal-cell.bg-blue {
+    background-color: #b8d4e8 !important;
+    color: #1a1814 !important;
+    border-radius: 4px;
+}
+
+.cal-cell.bg-green {
+    background-color: #c8e6c0 !important;
+    color: #1a1814 !important;
+    border-radius: 4px;
+}
+
+.cal-cell.bg-pink {
+    background-color: #f5c8c8 !important;
+    color: #7a2b2b !important;
+    border-radius: 4px;
+}
+
+.cal-cell.bg-blocked {
+    background-color: #e8e2d9 !important;
+    color: var(--light) !important;
+    border: 1px dashed var(--light) !important;
+    border-radius: 4px;
+}
+
+.cal-date-box {
+    cursor: pointer;
+    transition: filter 0.15s ease-in-out, transform 0.1s ease;
+}
+
+.cal-date-box:hover {
+    filter: brightness(0.95);
+    transform: scale(1.02);
+    z-index: 10;
+}
